@@ -1,0 +1,73 @@
+:root { --primary-color: #1C1410; --accent-color: #C09A5B; }
+
+/* Το μπάρα πλοήγησης - Σκούρο φόντο */
+.nav-strip {
+    background: var(--primary-color); /* Εδώ το Espresso χρώμα */
+    padding: 12px;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Τα κουμπιά - Χρυσό περίγραμμα, Λευκό κείμενο */
+.nav-pill {
+    padding: 8px 18px;
+    border: 1px solid var(--accent-color);
+    border-radius: 50px;
+    color: #ffffff; /* ΕΔΩ ΤΟ ΑΛΛΑΞΑΜΕ ΣΕ ΛΕΥΚΟ ΓΙΑ ΝΑ ΦΑΙΝΕΤΑΙ */
+    text-decoration: none;
+    font-size: 13px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Όταν είναι ενεργό, αντιστρέφουμε τα χρώματα */
+.nav-pill.active { 
+    background: var(--accent-color); 
+    color: var(--primary-color); /* Σκούρο κείμενο πάνω σε χρυσό φόντο */
+    font-weight: bold; 
+}
+
+/* Σημαντικό για το scroll: δίνει "αέρα" όταν πατάς το link */
+section { scroll-margin-top: 60px; } 
+
+/* ==========================================
+   MENU LAYOUT
+   ========================================== */
+.container { padding: 30px 20px; max-width: 600px; margin: 0 auto; }
+
+.menu-section { margin-bottom: 40px; }
+
+.section-title { 
+    font-family: 'EB Garamond', serif; 
+    font-size: 1.8rem;
+    color: var(--espresso); 
+    border-bottom: 1px solid var(--gold); 
+    padding-bottom: 10px; 
+    margin-bottom: 20px;
+}
+
+.menu-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+
+.menu-item { 
+    display: grid; 
+    grid-template-columns: 1fr auto; 
+    gap: 15px; 
+    border-bottom: 1px solid var(--border); 
+    padding-bottom: 15px; 
+}
+
+.item-name { font-family: 'EB Garamond', serif; font-size: 1.2rem; font-weight: 500; color: var(--espresso); }
+.item-desc { font-size: 0.9rem; color: var(--muted); margin-top: 4px; }
+.item-price { color: var(--gold); font-weight: 600; font-size: 1.1rem; }
+
+/* ==========================================
+   MOBILE OPTIMIZATION
+   ========================================== */
+@media (max-width: 600px) {
+    .hero h1 { font-size: 2rem; }
+    .section-title { font-size: 1.5rem; }
+}
