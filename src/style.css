@@ -1,73 +1,168 @@
-:root { --primary-color: #1C1410; --accent-color: #C09A5B; }
+:root {
+  --cream: #F8F4EE;
+  --parchment: #EFE8DC;
+  --espresso: #1C1410;
+  --sienna: #8B3A1C;
+  --gold: #C09A5B;
+  --gold-light: #E8D4A8;
+  --sage: #5C6B52;
+  --muted: #7A6E63;
+  --border: rgba(192,154,91,0.25);
+  --border-strong: rgba(192,154,91,0.55);
+}
 
-/* Το μπάρα πλοήγησης - Σκούρο φόντο */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background-color: var(--cream);
+  color: var(--espresso);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  max-width: 100%; 
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ── HERO ── */
+.hero {
+  background-color: var(--espresso);
+  color: var(--cream);
+  text-align: center;
+  padding: 56px 32px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 48px, rgba(192,154,91,0.04) 48px, rgba(192,154,91,0.04) 49px), repeating-linear-gradient(90deg, transparent, transparent 48px, rgba(192,154,91,0.04) 48px, rgba(192,154,91,0.04) 49px);
+}
+
+.hero-ornament { font-family: 'EB Garamond', serif; font-size: 12px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.hero-ornament span { display: inline-flex; align-items: center; gap: 12px; }
+.hero-ornament span::before, .hero-ornament span::after { content: ''; display: inline-block; width: 32px; height: 1px; background: var(--gold); opacity: 0.7; }
+
+.hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 300; line-height: 1.1; letter-spacing: 0.02em; margin-bottom: 6px; position: relative; }
+.hero h1 em { font-style: italic; color: var(--gold-light); font-weight: 300; }
+.hero-sub { font-family: 'EB Garamond', serif; font-style: italic; font-size: 18px; color: rgba(248,244,238,0.6); margin-bottom: 28px; position: relative; }
+.hero-divider { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 24px; position: relative; }
+.hero-divider::before, .hero-divider::after { content: ''; flex: 1; max-width: 80px; height: 1px; background: linear-gradient(to right, transparent, var(--gold)); }
+.hero-divider::after { background: linear-gradient(to left, transparent, var(--gold)); }
+.hero-diamond { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); }
+.hero-intro { font-size: 13.5px; line-height: 1.75; color: rgba(248,244,238,0.72); max-width: 320px; margin: 0 auto; position: relative; font-weight: 300; }
+
+/* ── NAV PILLS ── */
 .nav-strip {
-    background: var(--primary-color); /* Εδώ το Espresso χρώμα */
-    padding: 12px;
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+  background: var(--espresso); padding: 10px 16px 10px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 16px rgba(0,0,0,0.35);
 }
-
-/* Τα κουμπιά - Χρυσό περίγραμμα, Λευκό κείμενο */
+.nav-strip::-webkit-scrollbar { display: none; }
 .nav-pill {
-    padding: 8px 18px;
-    border: 1px solid var(--accent-color);
-    border-radius: 50px;
-    color: #ffffff; /* ΕΔΩ ΤΟ ΑΛΛΑΞΑΜΕ ΣΕ ΛΕΥΚΟ ΓΙΑ ΝΑ ΦΑΙΝΕΤΑΙ */
-    text-decoration: none;
-    font-size: 13px;
-    text-transform: uppercase;
-    white-space: nowrap;
+  flex-shrink: 0; padding: 7px 16px; border: 1px solid rgba(192,154,91,0.35); border-radius: 100px; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,244,238,0.65); cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; white-space: nowrap;
+}
+.nav-pill:hover, .nav-pill.active { background: var(--gold); border-color: var(--gold); color: var(--espresso); }
+
+/* ── SECTIONS ── */
+.section { padding: 40px 24px 0; }
+.section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
+.section-icon { width: 36px; height: 36px; border: 1px solid var(--border-strong); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.section-icon svg { width: 16px; height: 16px; fill: var(--gold); }
+.section-title { font-family: 'EB Garamond', serif; font-size: 28px; font-weight: 400; letter-spacing: 0.03em; color: var(--espresso); }
+.section-tagline { font-family: 'EB Garamond', serif; font-style: italic; font-size: 15px; color: var(--muted); margin-bottom: 24px; padding-left: 50px; }
+.section-rule { height: 1px; background: linear-gradient(to right, var(--border-strong), transparent); margin-bottom: 24px; }
+
+/* ── CSS GRID ΓΙΑ ΟΛΑ ΤΑ ΠΙΑΤΑ ── */
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr; 
+  column-gap: 20px;
 }
 
-/* Όταν είναι ενεργό, αντιστρέφουμε τα χρώματα */
-.nav-pill.active { 
-    background: var(--accent-color); 
-    color: var(--primary-color); /* Σκούρο κείμενο πάνω σε χρυσό φόντο */
-    font-weight: bold; 
+/* ── ITEMS ── */
+.item { padding: 18px 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; align-items: start; }
+.item-name { font-family: 'EB Garamond', serif; font-size: 18px; font-weight: 500; letter-spacing: 0.01em; color: var(--espresso); margin-bottom: 4px; line-height: 1.2; }
+.item-desc { font-size: 12.5px; line-height: 1.65; color: var(--muted); font-weight: 300; grid-column: 1; }
+.item-price { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 500; color: var(--sienna); white-space: nowrap; padding-top: 2px; }
+
+.item-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 100px; margin-left: 8px; font-family: 'Jost', sans-serif; font-weight: 400; }
+.badge-chef { background: rgba(139,58,28,0.1); color: var(--sienna); border: 1px solid rgba(139,58,28,0.2); }
+.badge-vegan { background: rgba(92,107,82,0.12); color: var(--sage); border: 1px solid rgba(92,107,82,0.25); }
+.badge-premium { background: rgba(192,154,91,0.12); color: #8B6B2C; border: 1px solid rgba(192,154,91,0.3); }
+
+/* ── BEST SELLERS BANNER ── */
+.bestsellers-block { margin: 40px 0 0; background: var(--espresso); padding: 36px 24px; position: relative; overflow: hidden; }
+.bestsellers-block::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; border: 1px solid rgba(192,154,91,0.15); }
+.bestsellers-block::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 140px; height: 140px; border-radius: 50%; border: 1px solid rgba(192,154,91,0.1); }
+.bs-label { font-size: 10.5px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; font-weight: 400; }
+.bs-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: var(--cream); margin-bottom: 16px; line-height: 1.2; }
+.bs-title em { font-family: 'EB Garamond', serif; font-style: italic; color: var(--gold-light); }
+.bs-items { display: flex; flex-direction: column; gap: 10px; position: relative; }
+.bs-item { display: flex; align-items: flex-start; justify-content: space-between; padding: 14px 16px; border: 1px solid rgba(192,154,91,0.2); border-radius: 6px; background: rgba(255,255,255,0.03); }
+.bs-item-name { font-family: 'EB Garamond', serif; font-size: 18px; color: var(--cream); font-weight: 400; }
+.bs-item-desc { font-size: 12.5px; color: rgba(248,244,238,0.6); line-height: 1.45; margin-top: 4px; padding-right: 10px; font-weight: 300; }
+.bs-item-price { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--gold); font-weight: 500; margin-top: 2px; white-space: nowrap; flex-shrink: 0; }
+
+/* ── SUBSECTIONS ── */
+.subsection-title { 
+  grid-column: 1 / -1; 
+  font-family: 'EB Garamond', serif; 
+  font-size: 20px; 
+  font-weight: 400; 
+  color: var(--espresso); 
+  letter-spacing: 0.04em; 
+  margin: 32px 0 4px; 
+  padding-bottom: 10px; 
+  border-bottom: 1px solid var(--border-strong); 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+}
+.subsection-title::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--gold); }
+
+/* ── DRINKS GRID ── */
+.drinks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin-bottom: 8px; }
+.drink-cell { background: var(--cream); padding: 14px 14px; }
+.drink-cell-name { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-weight: 500; color: var(--espresso); margin-bottom: 2px; }
+.drink-cell-price { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--sienna); margin-top: 6px; font-weight: 500; }
+
+/* ── FOOTER & EXTRAS ── */
+.menu-footer { margin-top: 48px; background: var(--espresso); padding: 40px 24px 48px; text-align: center; }
+.footer-ornament { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 20px; }
+.footer-ornament::before, .footer-ornament::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: rgba(192,154,91,0.5); }
+.footer-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); }
+.footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: var(--cream); margin-bottom: 4px; }
+.footer-address { font-size: 12.5px; color: rgba(248,244,238,0.45); letter-spacing: 0.06em; margin-bottom: 16px; line-height: 1.7; }
+.footer-allergy { font-size: 11.5px; color: rgba(248,244,238,0.35); line-height: 1.65; max-width: 300px; margin: 0 auto 20px; font-style: italic; }
+
+.brand-note { background: var(--parchment); margin: 0; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid var(--border-strong); }
+.brand-quote { font-family: 'EB Garamond', serif; font-style: italic; font-size: 19px; font-weight: 400; color: var(--espresso); line-height: 1.45; }
+.brand-body { font-size: 13px; color: var(--muted); line-height: 1.75; font-weight: 300; }
+.brand-location { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; }
+.brand-location::before { content: '◈'; font-size: 9px; }
+
+[id] { scroll-margin-top: 16px; }
+
+/* ==============================================
+   RESPONSIVE DESIGN (Tablets & Desktops)
+   ============================================== */
+@media (min-width: 768px) {
+  .section, .brand-note, .bestsellers-block { max-width: 850px; margin-left: auto; margin-right: auto; }
+  .bestsellers-block { border-radius: 12px; margin-top: 60px; }
+  .nav-strip { justify-content: center; }
+  .hero { padding: 80px 32px 60px; }
+  .hero h1 { font-size: 54px; }
+  .hero-intro { font-size: 15px; max-width: 500px; }
+  .menu-grid { grid-template-columns: repeat(2, 1fr); column-gap: 6%; }
+  .bs-items { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 16px; }
+  .bs-item { flex: 1 1 calc(50% - 20px); }
+  .drinks-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer-locations { flex-direction: row !important; justify-content: center; gap: 60px; }
+  .footer-locations > div:nth-child(2) { width: 1px !important; height: 80px !important; margin: 0 !important; }
 }
 
-/* Σημαντικό για το scroll: δίνει "αέρα" όταν πατάς το link */
-section { scroll-margin-top: 60px; } 
-
-/* ==========================================
-   MENU LAYOUT
-   ========================================== */
-.container { padding: 30px 20px; max-width: 600px; margin: 0 auto; }
-
-.menu-section { margin-bottom: 40px; }
-
-.section-title { 
-    font-family: 'EB Garamond', serif; 
-    font-size: 1.8rem;
-    color: var(--espresso); 
-    border-bottom: 1px solid var(--gold); 
-    padding-bottom: 10px; 
-    margin-bottom: 20px;
-}
-
-.menu-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-
-.menu-item { 
-    display: grid; 
-    grid-template-columns: 1fr auto; 
-    gap: 15px; 
-    border-bottom: 1px solid var(--border); 
-    padding-bottom: 15px; 
-}
-
-.item-name { font-family: 'EB Garamond', serif; font-size: 1.2rem; font-weight: 500; color: var(--espresso); }
-.item-desc { font-size: 0.9rem; color: var(--muted); margin-top: 4px; }
-.item-price { color: var(--gold); font-weight: 600; font-size: 1.1rem; }
-
-/* ==========================================
-   MOBILE OPTIMIZATION
-   ========================================== */
-@media (max-width: 600px) {
-    .hero h1 { font-size: 2rem; }
-    .section-title { font-size: 1.5rem; }
-}
+@media (min-width: 1024px) {
+  .section, .brand-note, .bestsellers-block { max-width: 1100px; }
+  .hero h1 { font-size: 64px; }
+  .menu-grid { grid-template-columns: repeat(3, 1fr); column-gap: 3.5%; }
+  .bs-item { flex: 1 1 calc(33.333% - 20px); }
+  .drinks-grid { grid-template-columns: repeat(6, 1fr); }
+}   
