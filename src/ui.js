@@ -48,9 +48,16 @@ async function updateMenuLoop() {
     
     // --- 1. ΕΦΑΡΜΟΓΗ CONFIG (Λογότυπο & Χρώματα) ---
     if (config) {
-        // Τραβάμε το site_name
+       // Τραβάμε το site_name και φτιάχνουμε τον υπότιτλο
         if (config.site_name) {
-            document.getElementById('restaurant-name').innerHTML = config.site_name;
+            // Αν έχεις βάλει "site_subtitle" στο Supabase το παίρνει, αλλιώς βάζει "Italian Restaurant"
+            let subtitle = config.site_subtitle ? config.site_subtitle : "Italian Restaurant";
+            
+            // Ενώνουμε το δυναμικό όνομα με τον πλάγιο υπότιτλο (όπως ήταν στο original design)
+            document.getElementById('restaurant-name').innerHTML = `${config.site_name}<br><em>${subtitle}</em>`;
+            
+            // Αλλάζει και τον τίτλο στην καρτέλα του browser!
+            document.title = config.site_name + " | Menu"; 
         }
         
         // Τραβάμε το logo_url
